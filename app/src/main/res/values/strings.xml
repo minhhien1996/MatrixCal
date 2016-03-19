@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">MatrixCal_demo</string>
+    <string name="calculate">Tính toán</string>
+    <string name="setting">Cài đặt</string>
+    <string name="exit">Thoát</string>
+    <string name="title_activity_setting">setting</string>
+    <string name="load">Đọc</string>
+    <string name="save">Lưu</string>
+    <string name="back_to_menu">Về Menu</string>
+    <string name="discard">Hủy bỏ</string>
+    <string name="apply">Lưu và áp dụng</string>
+    <string name="add">Cộng</string>
+    <string name="minus">Trừ</string>
+    <string name="product">Nhân</string>
+    <string name="numProduct">Nhân với số</string>
+    <string name="transpose">Chuyển vị</string>
+    <string name="invert">Nghịch đảo</string>
+    <string name="trace">Tìm vết</string>
+    <string name="determination">Định thức</string>
+    <string name="orthogonic">Chéo hóa</string>
+    <string name="storage">Bộ nhớ lưu trữ</string>
+    <string name="Menu">Matrix Calculator</string>
+    <string name="Function">Chức năng</string>
+    <string name="MatrixDisplay">Hiển thị ma trận</string>
+    <string name="invalid_input">Nhập không hợp lệ</string>
+    <string name="min_col">Số cột quá ít</string>
+    <string name="max_col">Số cột quá nhiều</string>
+    <string name="min_row">Số dòng quá ít</string>
+    <string name="max_row">Số dòng quá nhiều</string>
+    <string name="action_canceled">Phép tính bị hủy bỏ</string>
+    <string name="start_over">Phép tính mới</string>
+
+</resources>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <Button
+                    android:layout_width="75dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/btnRmCol"
+                    android:onClick="btnRmCol_clickListener"
+                    android:textSize="20dp"
+                    android:layout_weight="0"
+                    android:background="@drawable/corners_button"
+                    android:text="-"
+                    android:textColor="@drawable/text_color" />
+                <Button
+                    android:layout_width="75dp"
+                    android:layout_height="50dp"
+                    android:text="+"
+                    android:id="@+id/btnAddCol"
+                    android:onClick="btnAddCol_clickListener"
+                    android:background="@drawable/corners_button"
+                    android:layout_weight="0"
+                    android:textSize="20dp"
+                    android:textColor="@drawable/text_color" />
+            </LinearLayout>
+        </TableRow>
+        <TableRow>
+            <TableLayout
+                android:id="@+id/row2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TableRow android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp">
+                        <Button
+                            android:layout_width="50dp"
+                            android:layout_height="75dp"
+                            android:text="-"
+                            android:id="@+id/btnRmRow"
+                            android:onClick="btnRmRow_clickListener"
+                            android:background="@drawable/corners_button"
+                            android:textSize="20dp"
+                            android:textColor="@drawable/text_color" />
+                        <Button
+                            android:layout_width="50dp"
+                            android:layout_height="75dp"
+                            android:text="+"
+                            android:id="@+id/btnAddRow"
+                            android:onClick="btnAddRow_clickListener"
+                            android:background="@drawable/corners_button"
+                            android:textSize="20dp"
+                            android:textColor="@drawable/text_color" />
+                    </LinearLayout>
+
+                    <TableLayout
+                        android:id="@+id/matrixContainer"
+                        android:layout_weight="4">
+
+                    </TableLayout>
+                </TableRow>
+            </TableLayout>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:showDividers="middle"
+                android:divider="@drawable/matrix_divider"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/back_to_menu"
+                    android:id="@+id/btnMenu"
+                    android:onClick="backToMenu"
+                    android:layout_weight="1"
+                    android:background="@drawable/square_button"
+                    android:textColor="@drawable/text_color"
+                    android:drawableTop="@drawable/matrix_back"
+                    android:duplicateParentState="false"
+                    android:drawablePadding="5dp" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/load"
+                    android:id="@+id/btnLoad"
+                    android:layout_weight="1"
+                    android:background="@drawable/square_button"
+                    android:drawableTop="@drawable/matrix_load"
+                    android:onClick="load"
+                    android:nestedScrollingEnabled="false"
+                    android:textColor="@drawable/text_color"
+                    android:drawablePadding="5dp" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/save"
+                    android:id="@+id/btnSave"
+                    android:layout_weight="1"
+                    android:background="@drawable/square_button"
+                    android:drawableTop="@drawable/matrix_save"
+                    android:onClick="save"
+                    android:nestedScrollingEnabled="false"
+                    android:textColor="@drawable/text_color"
+                    android:drawablePadding="5dp" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/calculate"
+                    android:id="@+id/btnCal"
+                    android:layout_weight="1"
+                    android:background="@drawable/square_button"
+                    android:drawableTop="@drawable/matrix_calculate"
+                    android:onClick="calculate"
+                    android:nestedScrollingEnabled="false"
+                    android:textColor="@drawable/text_color"
+                    android:elegantTextHeight="false"
+                    android:drawablePadding="5dp" />
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>
