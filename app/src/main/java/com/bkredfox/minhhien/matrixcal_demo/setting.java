@@ -12,13 +12,13 @@ public class setting extends Activity {
         setContentView(R.layout.setting);
     }
 
-    public void applySetting(View view){
+    public void applySetting(View view) {
         //TODO: save setting
 
         this.finish();
     }
 
-    public void discardSetting(View view){
+    public void discardSetting(View view) {
         //TODO: discard setting
 
         this.finish();

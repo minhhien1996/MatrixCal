@@ -9,8 +9,7 @@ import android.widget.Button;
 public class menu extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
@@ -21,20 +20,18 @@ public class menu extends Activity {
 
     }
 
-    public void startCalculator(View view)
-    {
-        Intent intent_calculator = new Intent(this,matrixDisplay.class);
+    public void startCalculator(View view) {
+        Intent intent_calculator = new Intent(this, matrixDisplay.class);
         startActivity(intent_calculator);
     }
 
-    public void exit(View view)
-    {
+    public void exit(View view) {
         finish();
         System.exit(0);
     }
 
-    public void startSetting(View  view){
-        Intent intent_setting = new Intent(this,setting.class);
+    public void startSetting(View view) {
+        Intent intent_setting = new Intent(this, setting.class);
         startActivity(intent_setting);
     }
 }

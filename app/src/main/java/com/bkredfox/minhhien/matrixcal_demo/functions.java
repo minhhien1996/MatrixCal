@@ -22,7 +22,6 @@ public class functions extends Activity {
     Bundle bundle;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +38,12 @@ public class functions extends Activity {
         btnMinus = (Button) findViewById(R.id.minus);
 
 
-
     }
 
-    public void buttonOnClick(View view)
-    {
+    public void buttonOnClick(View view) {
         Intent returnIntent = new Intent();
         returnIntent.putExtra("func", view.getId());
-        setResult(Activity.RESULT_OK,returnIntent);
+        setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
 }

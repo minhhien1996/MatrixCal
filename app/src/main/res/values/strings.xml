@@ -29,5 +29,6 @@
     <string name="max_row">Số dòng quá nhiều</string>
     <string name="action_canceled">Phép tính bị hủy bỏ</string>
     <string name="start_over">Phép tính mới</string>
+    <string name="load_canceled">Không ma trận nào được đọc</string>
 
 </resources>

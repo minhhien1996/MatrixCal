@@ -20,10 +20,14 @@
         </activity>
         <activity android:name=".setting"
             android:label="@string/setting"/>
-        <activity android:name=".storage"
+        <activity
+            android:name=".load"
             android:label="@string/storage"/>
         <activity android:name=".functions"
             android:label="@string/Function"></activity>
+        <activity
+            android:name=".save"
+            android:label="@string/storage"></activity>
     </application>
 
 </manifest>

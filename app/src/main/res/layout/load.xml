@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".load">
+    <TableRow
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/matA_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="A"
+            android:textColor="@drawable/text_color" />
+        <Button
+            android:id="@+id/matB_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="B"
+            android:textColor="@drawable/text_color" />
+        <Button
+            android:id="@+id/matC_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="C"
+            android:textColor="@drawable/text_color" />
+    </TableRow>
+    <TableRow
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/matD_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="D"
+            android:textColor="@drawable/text_color" />
+        <Button
+            android:id="@+id/matE_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="E"
+            android:textColor="@drawable/text_color" />
+        <Button
+            android:id="@+id/matF_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="F"
+            android:textColor="@drawable/text_color" />
+    </TableRow>
+    <TableRow
+        android:gravity="center">
+        <Button
+            android:id="@+id/matG_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="G"
+            android:textColor="@drawable/text_color" />
+        <Button
+            android:id="@+id/matH_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="H"
+            android:textColor="@drawable/text_color" />
+        <Button
+            android:id="@+id/matI_load"
+            android:background="@drawable/corners_button"
+            android:onClick="btnStorageLoad_onClick"
+            android:text="I"
+            android:textColor="@drawable/text_color" />
+    </TableRow>
+</TableLayout>

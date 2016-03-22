@@ -3,66 +3,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bkredfox.minhhien.matrixcal_demo.storage"
-    android:gravity="center">
+    tools:context=".save">
+
     <TableRow
-        android:gravity="center"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+
         <Button
             android:id="@+id/matA"
-            android:text="A"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="A"
             android:textColor="@drawable/text_color" />
+
         <Button
             android:id="@+id/matB"
-            android:text="B"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="B"
             android:textColor="@drawable/text_color" />
+
         <Button
             android:id="@+id/matC"
-            android:text="C"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="C"
             android:textColor="@drawable/text_color" />
     </TableRow>
+
     <TableRow
-        android:gravity="center"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+
         <Button
             android:id="@+id/matD"
-            android:text="D"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="D"
             android:textColor="@drawable/text_color" />
+
         <Button
             android:id="@+id/matE"
-            android:text="E"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="E"
             android:textColor="@drawable/text_color" />
+
         <Button
             android:id="@+id/matF"
-            android:text="F"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="F"
             android:textColor="@drawable/text_color" />
     </TableRow>
-    <TableRow
-        android:gravity="center">
+
+    <TableRow android:gravity="center">
+
         <Button
             android:id="@+id/matG"
-            android:text="G"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="G"
             android:textColor="@drawable/text_color" />
+
         <Button
             android:id="@+id/matH"
-            android:text="H"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="H"
             android:textColor="@drawable/text_color" />
+
         <Button
             android:id="@+id/matI"
-            android:text="I"
             android:background="@drawable/corners_button"
+            android:onClick="btnStorageSave_onClick"
+            android:text="I"
             android:textColor="@drawable/text_color" />
     </TableRow>
 </TableLayout>
