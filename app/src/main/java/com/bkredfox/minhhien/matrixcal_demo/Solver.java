@@ -84,6 +84,7 @@ public class Solver {
 
     public double Det(Matrix m) {
         if (m.rows != m.cols) return 0;
+        if (m.rows == 1) return m.data[0][0];
         //int sign = 1;
         double output = 0;
         if (m.rows == 2) output = m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0];
@@ -99,7 +100,12 @@ public class Solver {
         for (int i = 0; i < m.rows; i++)
             for (int j = 0; j < m.cols; j++)
                 output.data[j][i] = Det(m.Copy((i + 1) % m.rows, (j + 1) % m.cols, m.rows - 1, m.cols - 1));
-        output = Multiply(output, 1 / Det(m));
+        double d = Det(m);
+        if (d != 0)
+            output = Multiply(output, 1 / d);
+        else {
+            //TODO
+        }
         return output;
     }
 

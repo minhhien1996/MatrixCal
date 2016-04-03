@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MatrixCal_demo</string>
+    <string name="app_name">MatrixCal</string>
     <string name="calculate">Tính toán</string>
     <string name="setting">Cài đặt</string>
     <string name="exit">Thoát</string>

@@ -15,10 +15,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class matrixDisplay extends Activity {
 
     static final int loader = 1;
     static final int calculator = 0;
+    static final int no_func = 0;
     public Button btnLoad;
     public Button btnSave;
     public Button btnCal;
@@ -30,6 +33,10 @@ public class matrixDisplay extends Activity {
     public EditText[][] matrix;
     public int columns;
     public int rows;
+    DecimalFormat precision = new DecimalFormat("0.00");
+
+    boolean colChange;
+    boolean rowChange;
     //1 for first input, 2 for second input, 3 for show reseult
     /*matDis(1) -> func         -> matDis(3)
                            v -> matDis(2) -> ^
@@ -42,6 +49,10 @@ public class matrixDisplay extends Activity {
     Matrix mat1, mat2, matRes;
     NumberSolve numberParsingSolver;
     JsonUtil jsonUtil;
+
+    String formatDouble(double dbl) {
+        return precision.format(dbl);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +74,19 @@ public class matrixDisplay extends Activity {
         btnSave = (Button) findViewById(R.id.btnSave);
         btnCal = (Button) findViewById(R.id.btnCal);
 
+        matRes = null;
         setInitValue();
+
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        if (stage != 2) {
+            rowChange = true;
+            colChange = true;
+        }
         loadCurrentMatrix();
         switch (stage) {
             case 1: {
@@ -125,7 +143,7 @@ public class matrixDisplay extends Activity {
         columns = 2;
         rows = 2;
 
-        matRes = null;
+        //matRes = null;
         mat1 = null;
         mat2 = null;
         stage = 1;
@@ -133,9 +151,20 @@ public class matrixDisplay extends Activity {
         func = 0;
         storage = false;
 
-        generateTable();
+        if (matRes != null) {
+            showMatrix(matRes);
+            btnRmRow.setVisibility(View.VISIBLE);
+            btnAddCol.setVisibility(View.VISIBLE);
+            btnAddRow.setVisibility(View.VISIBLE);
+            btnRmCol.setVisibility(View.VISIBLE);
+            btnLoad.setVisibility(View.VISIBLE);
+            btnSave.setVisibility(View.VISIBLE);
+        } else
+            generateTable();
 
         btnCal.setText(getString(R.string.calculate));
+        rowChange = true;
+        colChange = true;
 
 
     }
@@ -163,6 +192,7 @@ public class matrixDisplay extends Activity {
         Matrix res = new Matrix(rows, columns);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
+                if (matrix[i][j].getText().length() == 0) matrix[i][j].setText("0");
                 if (numberParsingSolver.SolveNumber(matrix[i][j].getText().toString())) {
                     res.data[i][j] = numberParsingSolver.result;
                 } else {
@@ -174,15 +204,50 @@ public class matrixDisplay extends Activity {
     }
 
     public void generateTable() {
-        if (func == R.id.numProduct) {
-            btnRmRow.setVisibility(View.INVISIBLE);
-            btnAddCol.setVisibility(View.INVISIBLE);
-            btnAddRow.setVisibility(View.INVISIBLE);
-            btnRmCol.setVisibility(View.INVISIBLE);
-            btnLoad.setVisibility(View.INVISIBLE);
-            btnSave.setVisibility(View.INVISIBLE);
-            columns = 1;
-            rows = 1;
+        if (stage == 2) {
+            switch (func) {
+                case R.id.add: {
+                    colChange = false;
+                    rowChange = false;
+                    rows = mat1.rows;
+                    columns = mat1.cols;
+                    break;
+                }
+                case R.id.minus: {
+                    colChange = false;
+                    rowChange = false;
+                    rows = mat1.rows;
+                    columns = mat1.cols;
+                    break;
+                }
+                case R.id.product: {
+                    rowChange = false;
+                    rows = mat1.cols;
+                    break;
+                }
+                case R.id.numProduct: {
+                    rowChange = false;
+                    colChange = false;
+                    rows = 1;
+                    columns = 1;
+                    break;
+                }
+            }
+
+            if (!rowChange || !colChange) {
+                btnLoad.setVisibility(View.INVISIBLE);
+                btnSave.setVisibility(View.INVISIBLE);
+                if (!rowChange) {
+                    btnRmRow.setVisibility(View.INVISIBLE);
+                    btnAddRow.setVisibility(View.INVISIBLE);
+
+                }
+                if (!colChange) {
+                    btnAddCol.setVisibility(View.INVISIBLE);
+                    btnRmCol.setVisibility(View.INVISIBLE);
+
+                }
+            }
         } else {
             btnRmRow.setVisibility(View.VISIBLE);
             btnAddCol.setVisibility(View.VISIBLE);
@@ -192,6 +257,7 @@ public class matrixDisplay extends Activity {
             btnSave.setVisibility(View.VISIBLE);
         }
 
+
         matrixContainer.removeAllViews();
         matrix = new EditText[rows][columns];
 
@@ -200,11 +266,12 @@ public class matrixDisplay extends Activity {
 
             for (int j = 0; j < columns; j++) {
                 matrix[i][j] = new EditText(this);
-                matrix[i][j].setText("0.0");
+                matrix[i][j].setHint("0");
                 matrix[i][j].setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
                 matrix[i][j].setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
                 matrix[i][j].setSingleLine(false);
                 matrix[i][j].setLines(2);
+
                 row.addView(matrix[i][j]);
             }
             matrixContainer.addView(row, new TableLayout.LayoutParams(
@@ -230,7 +297,7 @@ public class matrixDisplay extends Activity {
                 matrix[i][j].setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
                 matrix[i][j].setSingleLine(false);
                 matrix[i][j].setLines(2);
-                matrix[i][j].setText(Double.toString(mat.data[i][j]));
+                matrix[i][j].setText(formatDouble(mat.data[i][j]));
                 row.addView(matrix[i][j]);
             }
             matrixContainer.addView(row, new TableLayout.LayoutParams(
@@ -242,6 +309,9 @@ public class matrixDisplay extends Activity {
     public void showResult(Matrix mat) {
         showMatrix(mat);
         btnCal.setText(getString(R.string.start_over));
+        colChange = true;
+        rowChange = true;
+        func = no_func;
         btnRmRow.setVisibility(View.INVISIBLE);
         btnAddCol.setVisibility(View.INVISIBLE);
         btnAddRow.setVisibility(View.INVISIBLE);
@@ -269,8 +339,8 @@ public class matrixDisplay extends Activity {
 
     public void btnRmCol_clickListener(View v) {
         columns--;
-        if (columns < 2) {
-            columns = 2;
+        if (columns < 1) {
+            columns = 1;
             showToast(getString(R.string.min_col));
         }
         generateTable();
@@ -278,8 +348,8 @@ public class matrixDisplay extends Activity {
 
     public void btnRmRow_clickListener(View v) {
         rows--;
-        if (rows < 2) {
-            rows = 2;
+        if (rows < 1) {
+            rows = 1;
             showToast(getString(R.string.min_row));
         }
         generateTable();
@@ -287,6 +357,15 @@ public class matrixDisplay extends Activity {
 
     public void backToMenu(View view) {
 
+        matRes = null;
+        mat1 = null;
+        mat2 = null;
+        SharedPreferences preferences = getSharedPreferences("my_matrix", MODE_PRIVATE);
+        if (preferences != null) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.remove("matRes");
+            editor.commit();
+        }
         this.finish();
 
     }
@@ -311,6 +390,7 @@ public class matrixDisplay extends Activity {
             }
 
             case 2: {
+
                 mat2 = buildMatrix();
                 switch (func) {
                     case R.id.add: {
@@ -370,18 +450,21 @@ public class matrixDisplay extends Activity {
                             matRes = new Matrix(1, 1);
                             matRes.data[0][0] = solver.Trace(mat1);
                             showResult(matRes);
+                            saveCurrentMatrix();
                             break;
                         }
                         case R.id.transpose: {
                             stage = 3;
                             matRes = solver.Transpose(mat1);
                             showResult(matRes);
+                            saveCurrentMatrix();
                             break;
                         }
                         case R.id.invert: {
                             stage = 3;
                             matRes = solver.Reverse(mat1);
                             showResult(matRes);
+                            saveCurrentMatrix();
                             break;
                         }
                         case R.id.determination: {
@@ -389,6 +472,7 @@ public class matrixDisplay extends Activity {
                             matRes = new Matrix(1, 1);
                             matRes.data[0][0] = solver.Det(mat1);
                             showResult(matRes);
+                            saveCurrentMatrix();
                             break;
                         }
                         case R.id.orthogonic: {
