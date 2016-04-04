@@ -42,7 +42,7 @@ public class Solver {
             Matrix output = new Matrix(m1.rows, m2.cols);
             int len = m1.cols;
             for (int i = 0; i < m1.rows; i++)
-                for (int j = 0; j < m1.cols; j++) {
+                for (int j = 0; j < m2.cols; j++) {
                     int sum = 0;
                     for (int k = 0; k < len; k++)
                         sum += m1.data[i][k] * m2.data[k][j];
